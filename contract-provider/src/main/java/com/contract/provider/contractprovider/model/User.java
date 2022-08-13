@@ -1,10 +1,17 @@
 package com.contract.provider.contractprovider.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class User {
 
     private String name;
+    @Id
     private String cpf;
     private String profession;
+
+    public User(){}
 
     public User(String name, String cpf, String profession, int age) {
         this.name = name;

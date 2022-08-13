@@ -8,4 +8,6 @@ public interface UserService {
     User registerUser(User user);
 
     List<User> listUsers();
+
+    User searchUser(String cpf);
 }
