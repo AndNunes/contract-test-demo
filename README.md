@@ -1,1 +1,1 @@
-= Testes de Contrato com Spring Cloud Contract
+# Testes de Contrato com Spring Cloud Contract

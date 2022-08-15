@@ -1,9 +1,8 @@
 package com.contract.provider.contractprovider.controller;
 
-
 import com.contract.provider.contractprovider.model.User;
+import com.contract.provider.contractprovider.model.dto.UserDto;
 import com.contract.provider.contractprovider.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,13 +12,16 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
     private UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<User> registerUser(@RequestBody User user) {
-        return ResponseEntity.ok(userService.registerUser(user));
+    public ResponseEntity<User> registerUser(@RequestBody UserDto userDto) {
+        return ResponseEntity.ok(userService.registerUser(userDto));
     }
 
     @GetMapping
@@ -28,10 +30,10 @@ public class UserController {
         return ResponseEntity.ok(userService.listUsers());
     }
 
-    @GetMapping("/{cpf}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<User> searchUser(@PathVariable String cpf) {
-        User userResponse = userService.searchUser(cpf);
+    public ResponseEntity<User> searchUser(@PathVariable Long id) {
+        User userResponse = userService.searchUser(id);
 
         return ResponseEntity.ok(userResponse);
     }

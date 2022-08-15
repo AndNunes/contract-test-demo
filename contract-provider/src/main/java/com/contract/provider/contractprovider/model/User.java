@@ -1,22 +1,38 @@
 package com.contract.provider.contractprovider.model;
 
+import com.contract.provider.contractprovider.model.dto.UserDto;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class User {
 
-    private String name;
     @Id
-    private String cpf;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
     private String profession;
+    private String email;
+    private int age;
 
     public User(){}
 
-    public User(String name, String cpf, String profession, int age) {
-        this.name = name;
-        this.cpf = cpf;
-        this.profession = profession;
+    public User(UserDto userDto) {
+        this.name = userDto.getName();
+        this.profession = userDto.getProfession();
+        this.email = userDto.getEmail();
+        this.age = userDto.getAge();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -27,14 +43,6 @@ public class User {
         this.name = name;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public String getProfession() {
         return profession;
     }
@@ -43,4 +51,19 @@ public class User {
         this.profession = profession;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 }

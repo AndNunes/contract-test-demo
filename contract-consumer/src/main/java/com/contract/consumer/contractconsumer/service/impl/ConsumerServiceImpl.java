@@ -1,6 +1,7 @@
 package com.contract.consumer.contractconsumer.service.impl;
 
 import com.contract.consumer.contractconsumer.model.User;
+import com.contract.consumer.contractconsumer.model.dto.UserDto;
 import com.contract.consumer.contractconsumer.service.ConsumerService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -32,14 +33,14 @@ public class ConsumerServiceImpl implements ConsumerService {
     }
 
     @Override
-    public User registerUser(User user) throws IOException {
+    public User registerUser(UserDto userDto) throws IOException {
 
         webTarget = client
                 .target(env.getProperty(URL_APPLICATION_KEY))
                 .path(PATH_API);
 
         Response response = getInvocation(webTarget)
-                .post(Entity.json(user));
+                .post(Entity.json(userDto));
 
         return convertToUser(response.readEntity(String.class));
     }
@@ -57,11 +58,11 @@ public class ConsumerServiceImpl implements ConsumerService {
     }
 
     @Override
-    public User searchUser(String cpf) throws IOException {
+    public User searchUser(Long id) throws IOException {
 
         webTarget = client
                 .target(env.getProperty(URL_APPLICATION_KEY))
-                .path(PATH_API + "/" +  cpf);
+                .path(PATH_API + "/" +  id);
 
         Response response = getInvocation(webTarget)
                 .get();

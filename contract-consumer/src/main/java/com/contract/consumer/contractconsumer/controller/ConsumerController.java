@@ -1,6 +1,7 @@
 package com.contract.consumer.contractconsumer.controller;
 
 import com.contract.consumer.contractconsumer.model.User;
+import com.contract.consumer.contractconsumer.model.dto.UserDto;
 import com.contract.consumer.contractconsumer.service.ConsumerService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,8 @@ public class ConsumerController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<User> registerUser(@RequestBody User user) throws IOException {
-        return ResponseEntity.ok(consumerService.registerUser(user));
+    public ResponseEntity<User> registerUser(@RequestBody UserDto userDto) throws IOException {
+        return ResponseEntity.ok(consumerService.registerUser(userDto));
     }
 
     @GetMapping
@@ -30,9 +31,9 @@ public class ConsumerController {
         return ResponseEntity.ok(consumerService.searchAllUsers());
     }
 
-    @GetMapping("/{cpf}")
+    @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<User> searchUser(@PathVariable String cpf) throws IOException {
-        return ResponseEntity.ok(consumerService.searchUser(cpf));
+    public ResponseEntity<User> searchUser(@PathVariable Long id) throws IOException {
+        return ResponseEntity.ok(consumerService.searchUser(id));
     }
 }

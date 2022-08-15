@@ -1,31 +1,17 @@
-package com.contract.consumer.contractconsumer.model;
+package com.contract.provider.contractprovider.model.dto;
 
-public class User {
+public class UserDto {
 
-    private Long id;
     private String name;
     private String profession;
     private String email;
     private int age;
 
-    public User() {}
-
-    public User(String name,
-                String profession,
-                String email,
-                int age) {
+    public UserDto(String name, String profession, String email, int age) {
         this.name = name;
         this.profession = profession;
         this.email = email;
         this.age = age;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {
