@@ -12,19 +12,19 @@ make {
         }
         body([
                 [
-                        id              :   $(regex('[0-9]')),
-                        name            :   "Anderson Nunes da Silva",
-                        profession      :   "Analista de Sistemas",
-                        email           :   "anderson.nunes@gmail.com",
-                        age             :   28
+                        id              :   Utils.anyId(),
+                        name            :   Utils.anyNameNoEmpty(),
+                        profession      :   Utils.anyProfession(),
+                        email           :   Utils.anyEMail(),
+                        age             :   Utils.anyAge()
 
                 ],
                 [
-                        id              :   $(regex('[0-9]')),
-                        name            :   "Francisco de Assis",
-                        profession      :   "Vigia",
-                        email           :   "francisco.assis@gmail.com",
-                        age             :   53
+                        id              :   Utils.anyId(),
+                        name            :   Utils.anyNameNoEmpty(),
+                        profession      :   Utils.anyProfession(),
+                        email           :   Utils.anyEMail(),
+                        age             :   Utils.anyAge()
                 ]
         ])
     }
